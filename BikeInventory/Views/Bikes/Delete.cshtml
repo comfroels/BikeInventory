@@ -1,0 +1,59 @@
+﻿@model BikeInventory.Models.Bike
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete @Html.DisplayFor(model => model.name)</h2>
+
+<h3>Are you sure you want to delete this bike?</h3>
+<br />
+<fieldset>
+    <legend>Bike</legend>
+
+    <div class="display-label">
+        <strong>Bike Name</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">
+        <strong>Bike Rating</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.rating)
+    </div>
+
+    <div class="display-label">
+        <strong>Bike Price</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.price)
+    </div>
+
+    <div class="display-label">
+        <strong>Bike Quantity</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.quantity)
+    </div>
+
+    <div class="display-label">
+        <strong>Bike Type</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.type)
+    </div>
+</fieldset>
+<br />
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        
+    </p>
+    <p>
+        @Html.ActionLink("Back to List", "Index") 
+    </p>
+}

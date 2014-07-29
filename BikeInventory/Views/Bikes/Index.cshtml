@@ -1,0 +1,73 @@
+﻿@model IEnumerable<BikeInventory.Models.Bike>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Bike List</h2>
+<br />
+<p>
+    @Html.ActionLink("Create New", "Create", new object { }, new { @class= "btn btn-primary"})
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            Bike Name
+        </th>
+        <th>
+            Bike Rating
+        </th>
+        <th>
+            Bike Price
+        </th>
+        <th>
+            Bike Quantity
+        </th>
+        <th>
+            Bike Type
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+    @{ var total = 0; var sum = 0.0;}
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rating)
+        </td>
+        <td>
+           @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID},new {@class="btn btn-default" }) 
+            @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-success" }) 
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Remove One", "Remove", new { id = item.ID }, new { @class = "btn btn-warning" })
+        </td>
+    </tr>
+    total += item.quantity;
+    var tempQuantity = Convert.ToDouble(item.quantity);
+    var tempPrice = Convert.ToDouble(item.price);
+    sum += (tempQuantity * tempPrice);
+    
+}
+    <tr>
+        <td>Summary</td>
+        <td></td>
+        <td><p>$@sum </p><strong>Total Inventory</strong></td>
+        <td><p>@total</p> <strong>Total Bikes</strong></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+</table>

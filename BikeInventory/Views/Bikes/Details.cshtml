@@ -1,0 +1,51 @@
+﻿@model BikeInventory.Models.Bike
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details for @Html.DisplayFor(model => model.name)</h2>
+<br />
+<fieldset>
+    <legend>Bike</legend>
+
+    <div class="display-label">
+        <strong>Bike Name</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">
+        <strong>Bike Rating</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.rating)
+    </div>
+
+    <div class="display-label">
+        <strong>Bike Price</strong>
+    </div>
+    <div class="display-field">
+       @Html.DisplayFor(model => model.price)
+    </div>
+
+    <div class="display-label">
+        <strong>Bike Quantity</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.quantity)
+    </div>
+
+    <div class="display-label">
+        <strong>Bike Type</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.type)
+    </div>
+</fieldset>
+<br />
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

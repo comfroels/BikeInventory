@@ -1,0 +1,84 @@
+﻿@model BikeInventory.Models.Bike
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit @Html.DisplayFor(model => model.name)</h2>
+<br />
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Bike</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="editor-label">
+            <strong>Bike Name</strong>
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+
+        <div class="editor-label">
+            <strong>Bike Rating</strong>
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.rating)
+            @Html.ValidationMessageFor(model => model.rating)
+        </div>
+
+        <div class="editor-label">
+            <strong>Bike Price</strong>
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.price)
+            @Html.ValidationMessageFor(model => model.price)
+        </div>
+
+        <div class="editor-label">
+            <strong>Bike Quantity</strong>
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.quantity)
+            @Html.ValidationMessageFor(model => model.quantity)
+        </div>
+
+        <div class="editor-label">
+            <strong>Bike Type</strong>
+        </div>
+        <div class="editor-field">
+            @*@Html.EditorFor(model => model.type)*@
+            @Html.DropDownListFor(model => model.type, 
+                new SelectList(
+              new List<Object>
+              {
+                  new {value = "Mountain Bike", text = "Mountain Bike" },
+                  new {value = "BMX Bike", text = "BMX Bike"},
+                  new {value = "All Purpose Bike", text = "All Purpose Bike"},
+                  new {value = "Racing Bike", text = "Racing Bike"}
+              },
+                   "value",
+                   "text"                 
+                    )
+           )
+            @Html.ValidationMessageFor(model => model.type)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" class="btn btn-default"  />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
